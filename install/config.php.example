@@ -1,0 +1,11 @@
+<?php
+
+//Variables para la inicialización de la conexión a la base de datos
+define('DB_HOST', 'localhost');  //Host donde está alojado el servidor de base de datos normalmente es localhost
+define('DB_USER', 'root');  //Usuario de la base de datos por lo general en una instalación standard de mysql es 'root'
+define('DB_PASS', ''); //Contraseña de la base de datos por lo general en una instalación standard de mysql es '' o sea sin contraseña
+define('DB_NAME', 'install_script_test2');  //El nombre de la base de datos que se va a usar, por ejemplo 'db_test' puede ser cualquier nombre
+
+// Otras configuraciones
+define('APP_NAME', 'Assesstment');
+define('DEBUG_MODE', true);
