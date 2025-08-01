@@ -1,0 +1,35 @@
+# Denegar acceso a archivos sensibles
+<FilesMatch "^(config|database)\.php$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "\.sql$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(env|ini|log|bak|backup)$">
+    Require all denied
+</FilesMatch>
+
+# Permitir solo archivos públicos
+<FilesMatch "\.(php|html|css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+    Require all granted
+</FilesMatch>
+
+# Configuración de URLs amigables
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Permitir acceso solo a archivos específicos
+<FilesMatch "^(index|product|category)\.php$">
+    Require all granted
+</FilesMatch>
+
+# Denegar acceso a archivos ocultos (que comienzan con .)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+

@@ -48,76 +48,86 @@ VALUES('Computadoras', NULL),
     ('Accesorios', NULL),
     ('Monitores', 9);
 # Agregamos los primeros 10 productos para mostrar en el sitio
-INSERT INTO products (model, specs, price, main_category, brand)
+INSERT INTO products (model, specs, price, main_category, brand, image)
 VALUES (
         'ROG STRIX G15',
         'Procesador AMD Ryzen 7 6800H, NVIDIA GeForce RTX 3060, 16GB RAM DDR5, 512GB SSD NVMe, Pantalla IPS de 15.6" Full HD (1920x1080) 144Hz.',
         25000,
         2,
-        'ASUS'
+        'ASUS',
+        'laptop_2.png'
     ),
     (
         'UltraSharp U3821DW',
         'Pantalla IPS curva de 37.5" (3840x1600), relación de aspecto 21:9, cobertura de color sRGB del 100%, DisplayPort, HDMI, USB-C (90W Power Delivery)',
         18500,
         10,
-        'Dell'
+        'Dell',
+        'monitor_1.png'
     ),
     (
         'GeForce RTX 4070 Ti',
         '12GB GDDR6X, Interfaz PCIe 4.0, 7680 CUDA Cores, Boost Clock 2790 MHz.',
         16899,
         4,
-        'Dell'
+        'Dell',
+        'gpu_1.png'
     ),
     (
         'T7 Shield',
         '2TB NVMe SSD, Interfaz USB 3.2 Gen 2 (hasta 1,050 MB/s de lectura, 1,000 MB/s de escritura), resistente al agua y al polvo (IP65), protección contra caídas de 3 metros.',
         3199,
         8,
-        'Samsung'
+        'Samsung',
+        'disco_duro_1.png'
     ),
     (
         'Alloy Origins Core',
         'Switches mecánicos HyperX Red (lineales), retroiluminación RGB por tecla, marco de aluminio, diseño TKL (Tenkeyless)',
         1799,
         4,
-        'HyperX'
+        'HyperX',
+        'keyboard_1.png'
     ),
     (
         'G502 LIGHTSPEED',
         'Sensor HERO 25K (hasta 25,600 DPI), 11 botones programables, tecnología inalámbrica LIGHTSPEED, compatible con carga PowerPlay, peso ajustable',
         1949,
         9,
-        'Logitech'
+        'Logitech',
+        'mouse_1.png'
     ),
     (
         'Vengeance RGB DDR5',
         '32GB (2x16GB) DDR5 6000MHz, Latencia CL30, compatible con Intel XMP 3.0, iluminación RGB.',
         2899,
         7,
-        'Corsair'
+        'Corsair',
+        'ram_1.png'
     ),
     (
         'Laptop Gamer MSI THIN 15 B13VE',
         'Intel Core i5-13420H / 144Hz / 16GB / 512GB SSD / NVIDIA GeForce RTX 4060 / Gris',
         19999,
         2,
-        'MSI'
+        'MSI',
+        'laptop_1.png'
     ),
     (
         'Monitor Profesional NZXT CANVAS 27Q V2',
         '27” / QHD / 2560x1440 / 165Hz / 1ms / HDMIx2 / DP / HDR 10 / AMD FreeSync Premium y Gsync / Panel IPS / Incluye Base para Monitor /',
         2999,
         10,
-        'NZXT'
+        'NZXT',
+        'monitor_2.png'
     ),
     (
         'Procesador AMD Ryzen 7 5800XT',
         '8 Core / 16 Thread / 3.8GHz / 4.8GHz Boost / AM4 / TDP 105W / (Requiere Tarjeta de Video)',
         3899,
         5,
-        'AMD'
+        'AMD',
+        'procesador_3.png'
     );
 #
     # Insertamos 10 registros de comentarios
