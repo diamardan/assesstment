@@ -57,4 +57,24 @@ Actividades completadas:
 
 ## CREACIÓN DE LA BASE DE DATOS
 - Script con la creación de las tablas 'producto', 'comentarios' y 'categorias'.
-- Script para la nserción de los primeros 10 registros para cada tabla.
+- Script para la inserción de los primeros 10 registros para cada tabla.
+- Script de conexión a la base de datos 
+- Script para la inserción de 10 registros extra a cada tabla.
+- Logger de reporte de errores y cantidad de registros insertados.
+
+## Modelos
+- Creación del modelo Product
+- Creación del modelo Category
+- Creación del modelo Comments
+
+## Métodos para las clases
+- Metodos de obtención para Produc
+- Metodos de obtención para Category
+- Metodos de obtención para Comments
+
+## PUBLIC_HTML
+- Vista general de categorías padre en index.php
+- Vista de subcategorias al entrar en una categoría padre
+- Visualización de 10 productos aleatorios mostrado com 'Productos destacados'
+- Visualización de 10 productos mejor valorados
+- Navegación a detalle del producto con visualización de comentarios
