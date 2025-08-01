@@ -1,9 +1,10 @@
 <?php
-session_start();
 
+session_start();
 // Incluir los modelos
 require_once __DIR__ . '/../php/models/Category.php';
 require_once __DIR__ . '/../php/models/Product.php';
+require_once __DIR__ . '/../php/models/Comments.php';
 
 // Obtener el ID del producto desde la URL
 $productId = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -11,6 +12,7 @@ $productId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 // Crear instancias de los modelos
 $categoryModel = new Category();
 $productModel = new Product();
+$commentsModel = new Comment();
 
 // Obtener el producto
 $product = $productModel->getById($productId);
@@ -23,6 +25,7 @@ if (!$product) {
 
 // Obtener categorías principales para el menú
 $mainCategories = $categoryModel->getMainCategories();
+$comments = $commentsModel->getByProductId($productId);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +34,8 @@ $mainCategories = $categoryModel->getMainCategories();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="css/style.css">
 
     <title>Document</title>
@@ -89,7 +94,49 @@ $mainCategories = $categoryModel->getMainCategories();
         </div>
 
 
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <img src="./assets/images/<?= $product['image']; ?>" alt="">
 
+                    </div>
+                </div>
+                <div class="col-6">
+                    <p class="title"><?= $product['model']; ?></p>
+                    <div class="container"><?= $product['specs']; ?></div>
+                    <div class="text-danger fw-bold">$ <?= number_format($product['price']); ?> MXN</div>
+
+                </div>
+
+            </div>
+            <p></p>
+            <h3>Comentarios de los compradores</h3>
+            <?php foreach ($comments as $comment) : ?>
+                <div class="comment-card">
+                    <div class="comment-card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="">
+                                    <?= $comment['user_name']; ?>
+                                </h4>
+
+
+                            </div>
+                            <div class="col-md-6">
+
+                                <p>
+                                    <?php for ($i = 0; $i <= 4; $i++) : ?>
+                                        <span class="fa fa-star <?= $i < $comment['rating'] ? 'checked' : null; ?>"></span>
+                                    <?php endfor; ?>
+                                </p>
+
+                            </div>
+                        </div>
+                        <?= $comment['text']; ?>
+                    </div>
+                </div>
+            <?php endforeach ?>
 </body>
 
 </html>

@@ -7,6 +7,14 @@ body {
     transition: transform 0.3s;
     height: 100%;
 }
+.comment-card {
+    transition: transform 0.3s;
+    height: 100%;
+    border: solid 1px #e0e0e0;
+    border-radius: 8;
+    padding: 12px;
+
+}
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -32,4 +40,7 @@ body {
 }
 .product-card {
     text-decoration: none;
+}
+.checked {
+    color: orange;
 }

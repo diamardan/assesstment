@@ -40,4 +40,28 @@ class Product
         $query = "SELECT t1.*,t2.id as categoryId,t2.name,t2.parent_id FROM " . $this->table . " t1 LEFT JOIN " . $this->categories . " t2 on t2.id = t1.main_category WHERE main_category = ?";
         return $this->db->fetchAll($query, [$categoryId]);
     }
+
+    //Obtener los productos destacados
+    public function getFeatured()
+    {
+        $query = "SELECT * FROM " . $this->table . " ORDER BY RAND() DESC LIMIT 10";
+        return $this->db->fetchAll($query);
+    }
+
+    //Obtener los productos mejor valorados
+    public function getTopRated()
+    {
+        $query = "SELECT 
+                    p.*,
+                    AVG(c.rating) as average_rating,
+                    COUNT(c.id) as total_reviews
+                  FROM " . $this->table . " p
+                  LEFT JOIN comments c ON p.id = c.product_id
+                  GROUP BY p.id
+                  HAVING average_rating IS NOT NULL
+                  ORDER BY average_rating DESC, total_reviews DESC
+                  LIMIT 10";
+        
+        return $this->db->fetchAll($query);
+    }
 }
