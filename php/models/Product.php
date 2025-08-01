@@ -42,26 +42,45 @@ class Product
     }
 
     //Obtener los productos destacados
-    public function getFeatured()
+    public function getFeatured($catId = 0)
     {
-        $query = "SELECT * FROM " . $this->table . " ORDER BY RAND() DESC LIMIT 10";
-        return $this->db->fetchAll($query);
+        if ($catId > 0) {
+            $query = "SELECT * FROM " . $this->table . " WHERE main_category = ? ORDER BY RAND() DESC LIMIT 10";
+            return $this->db->fetchAll($query, [$catId]);
+        } else {
+            $query = "SELECT * FROM " . $this->table . " ORDER BY RAND() DESC LIMIT 10";
+            return $this->db->fetchAll($query);
+        }
     }
 
     //Obtener los productos mejor valorados
-    public function getTopRated()
+    public function getTopRated($catId = 0)
     {
-        $query = "SELECT 
-                    p.*,
-                    AVG(c.rating) as average_rating,
-                    COUNT(c.id) as total_reviews
-                  FROM " . $this->table . " p
-                  LEFT JOIN comments c ON p.id = c.product_id
-                  GROUP BY p.id
-                  HAVING average_rating IS NOT NULL
-                  ORDER BY average_rating DESC, total_reviews DESC
-                  LIMIT 10";
-        
-        return $this->db->fetchAll($query);
+        if ($catId > 0) {
+            $query = "SELECT 
+                        p.*,
+                        AVG(c.rating) as average_rating,
+                        COUNT(c.id) as total_reviews
+                      FROM " . $this->table . " p
+                      LEFT JOIN comments c ON p.id = c.product_id
+                      WHERE p.main_category = ?
+                      GROUP BY p.id
+                      HAVING average_rating IS NOT NULL
+                      ORDER BY average_rating DESC, total_reviews DESC
+                      LIMIT 10";
+            return $this->db->fetchAll($query, [$catId]);
+        } else {
+            $query = "SELECT 
+                        p.*,
+                        AVG(c.rating) as average_rating,
+                        COUNT(c.id) as total_reviews
+                      FROM " . $this->table . " p
+                      LEFT JOIN comments c ON p.id = c.product_id
+                      GROUP BY p.id
+                      HAVING average_rating IS NOT NULL
+                      ORDER BY average_rating DESC, total_reviews DESC
+                      LIMIT 10";
+            return $this->db->fetchAll($query);
+        }
     }
 }

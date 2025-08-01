@@ -86,6 +86,8 @@ $mainCategories = $categoryModel->getMainCategories();
         </div>
     </div>
 
+    <?php include './includes/featured.php'; ?>
+    <?php include './includes/best_rated.php'; ?>
     <!-- Botón volver -->
     <div class="row mt-4">
         <div class="col-12 text-center">

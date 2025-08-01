@@ -78,3 +78,4 @@ Actividades completadas:
 - Visualización de 10 productos aleatorios mostrado com 'Productos destacados'
 - Visualización de 10 productos mejor valorados
 - Navegación a detalle del producto con visualización de comentarios
+- En la vista de la categoria seleccionada mostramos los productos mejor valorados y destacados correspondientes a la categoría seleccionada.
